@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responses</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">Responses for: {{ question.text }}</h2>
+        {% for response in responses %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="card-text">{{ response.text }}</p>
+                    <p class="card-text">Score: {{ response.score }}</p>
+                    <a href="{% url 'score_view' response.id %}" class="btn btn-primary">Score this response</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>No responses yet.</p>
+        {% endfor %}
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
